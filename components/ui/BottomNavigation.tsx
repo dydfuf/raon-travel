@@ -1,3 +1,5 @@
+"use client";
+
 import {
   HomeIcon,
   MessageSquareIcon,
@@ -5,6 +7,7 @@ import {
   MoreHorizontalIcon,
 } from "lucide-react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 const MenuItems = [
   {
@@ -30,17 +33,31 @@ const MenuItems = [
 ];
 
 export default function BottomNavigation() {
+  const pathname = usePathname();
+
   return (
     <nav className="fixed bottom-0 w-full bg-background border-t border-t-accent">
       <div className="flex items-center justify-evenly py-2">
-        {MenuItems.map((item) => (
-          <Link href={item.href} key={item.label} className="w-full">
-            <div className="flex flex-col items-center justify-center">
-              {item.icon}
-              <span className="text-sm">{item.label}</span>
-            </div>
-          </Link>
-        ))}
+        {MenuItems.map((item) => {
+          const isActive =
+            pathname === item.href ||
+            (item.href !== "/" && pathname.startsWith(item.href));
+
+          return (
+            <Link href={item.href} key={item.label} className="w-full">
+              <div
+                className={`flex flex-col items-center justify-center ${
+                  isActive
+                    ? "text-primary font-medium"
+                    : "text-muted-foreground opacity-50"
+                }`}
+              >
+                {item.icon}
+                <span className="text-sm">{item.label}</span>
+              </div>
+            </Link>
+          );
+        })}
       </div>
     </nav>
   );
