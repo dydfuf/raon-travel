@@ -2,13 +2,13 @@ import ChatMessage from "./_component/ChatMessage";
 import ChatMessageHeader from "./_component/ChatMessageHeader";
 
 interface ChatPageProps {
-  params: {
+  params: Promise<{
     chatId: string;
-  };
+  }>;
 }
 
-export default function ChatPage({ params }: ChatPageProps) {
-  const { chatId } = params;
+export default async function ChatPage({ params }: ChatPageProps) {
+  const { chatId } = await params;
   console.log({ chatId });
 
   return (

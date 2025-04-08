@@ -1,23 +1,14 @@
-"use client";
-
 import { GalleryVerticalEnd } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { login } from "../actions";
-import { useSearchParams } from "next/navigation";
 
 export function LoginForm({
   className,
   ...props
 }: React.ComponentProps<"div">) {
-  const searchParams = useSearchParams();
-  const error = searchParams.get("error");
-
-  // TODO: 에러 처리
-  console.log({ error });
-
   return (
     <div className={cn("flex flex-col gap-6", className)} {...props}>
       <form>
