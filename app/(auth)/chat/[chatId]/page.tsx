@@ -1,4 +1,5 @@
 import ChatMessage from "./_component/ChatMessage";
+import ChatMessageHeader from "./_component/ChatMessageHeader";
 
 interface ChatPageProps {
   params: {
@@ -11,8 +12,19 @@ export default function ChatPage({ params }: ChatPageProps) {
   console.log({ chatId });
 
   return (
-    <div>
-      <ChatMessage />
-    </div>
+    <main className="h-full">
+      <div className="relative">
+        <div className="flex min-h-dvh">
+          <main className="flex-1 min-h-dvh max-w-full">
+            <div className="flex h-dvh">
+              <div className="relative flex flex-col w-full items-center flex-1 h-dvh gap-4">
+                <ChatMessageHeader />
+                <ChatMessage />
+              </div>
+            </div>
+          </main>
+        </div>
+      </div>
+    </main>
   );
 }
