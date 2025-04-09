@@ -10,6 +10,7 @@ import { ChatMessageItem } from "./ChatMessageItem";
 import { Button } from "@/components/ui/button";
 import { Send } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { ChatAiInformation } from "./ChatAiInformation";
 
 export default function ChatMessage() {
   const initialMessages: UIMessage[] = [];
@@ -57,6 +58,8 @@ export default function ChatMessage() {
     <div className="flex flex-col h-full w-full bg-background text-foreground antialiased">
       {/* Messages */}
       <div ref={containerRef} className="flex-1 overflow-y-auto p-4 space-y-4">
+        <ChatAiInformation />
+
         {allMessages.length === 0 ? (
           <div className="text-center text-sm text-muted-foreground">
             No messages yet. Start the conversation!
