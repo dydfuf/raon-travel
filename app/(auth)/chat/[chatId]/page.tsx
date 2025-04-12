@@ -18,7 +18,7 @@ export default async function ChatPage({ params }: ChatPageProps) {
           <main className="flex-1 min-h-dvh max-w-full">
             <div className="flex h-dvh">
               <div className="relative flex flex-col w-full items-center flex-1 h-dvh gap-4">
-                <ChatMessageHeader />
+                <ChatMessageHeader title="채팅" />
                 <ChatMessage />
               </div>
             </div>
